@@ -184,13 +184,13 @@ const arrPenelitianDosenDefni = [
   "Analisis Sistim Informasi Akademik Berbasis Web Menggunakan Model Kano",
 ];
 
-console.log(
-  winnowingHandler({
-    strJudulMhs: strJudulMahasiswa,
-    // arrJudulDosen: arrPenelitianDosenAlde,
-    // arrJudulDosen: arrPenelitianDosenRoni,
-    arrJudulDosen: arrPenelitianDosenDefni,
-    kGramCount: 3,
-    windowCount: 5,
-  })
-);
+// console.log(
+//   winnowingHandler({
+//     strJudulMhs: strJudulMahasiswa,
+//     // arrJudulDosen: arrPenelitianDosenAlde,
+//     // arrJudulDosen: arrPenelitianDosenRoni,
+//     arrJudulDosen: arrPenelitianDosenDefni,
+//     kGramCount: 3,
+//     windowCount: 5,
+//   })
+// );
