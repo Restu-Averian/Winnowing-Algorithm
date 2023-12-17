@@ -2,7 +2,7 @@
 //   "PENENTUAN DOSEN PEMBIMBING TUGAS AKHIR JURUSAN TI Politeknik Negeri Padang DENGAN ALGORITMA AHP-WP DAN WINNOWING BERBASIS WEBSITE";
 
 // ---------------Helpers---------------
-const preProcessingText = (str = "") => {
+export const preProcessingText = (str = "") => {
   // a. Case Folding
   const lowerCaseStr = str?.toLowerCase();
 
@@ -15,12 +15,12 @@ const preProcessingText = (str = "") => {
 
   return punctClean;
 };
-const roundUp4 = (num = 0) =>
+export const roundUp4 = (num = 0) =>
   Math.ceil(num * Math.pow(10, 4)) / Math.pow(10, 4);
 // ---------------End---------------
 
 // ---------------Winnowing Process---------------
-const arrKGramHandler = ({ str, kGramCount = 3 }) => {
+export const arrKGramHandler = ({ str, kGramCount = 3 }) => {
   const arrKGramDatas = [];
 
   for (let i = 0; i < str?.length; i++) {
@@ -34,7 +34,7 @@ const arrKGramHandler = ({ str, kGramCount = 3 }) => {
 
 // arrKGramHandler({ str: strJudulMahasiswa, kGramCount: 3 });
 
-const rollingHashEachHandler = ({ str }) => {
+export const rollingHashEachHandler = ({ str }) => {
   const asciiStrArr = [];
   const numArr = [];
   const RHEachArrDatas = []; // RH = Rolling Hash
@@ -60,7 +60,7 @@ const rollingHashEachHandler = ({ str }) => {
 // console.log(rollingHashEachHandler({ str: "pen" }));
 // console.log(rollingHashEachHandler({ str: "ene" }));
 
-const arrRollingHashHandler = ({ str, kGramCount }) => {
+export const arrRollingHashHandler = ({ str, kGramCount }) => {
   const arrRH = [];
   arrKGramHandler({ str, kGramCount })?.forEach((dataKGramStr) => {
     arrRH?.push(rollingHashEachHandler({ str: dataKGramStr }));
@@ -69,7 +69,7 @@ const arrRollingHashHandler = ({ str, kGramCount }) => {
   return arrRH;
 };
 
-const windowHandler = ({ str, kGramCount, windowCount }) => {
+export const windowHandler = ({ str, kGramCount, windowCount }) => {
   const windowArrDatas = [];
   const arrRHDatas = arrRollingHashHandler({ str, kGramCount });
 
@@ -79,7 +79,7 @@ const windowHandler = ({ str, kGramCount, windowCount }) => {
   return windowArrDatas;
 };
 
-const fingerPrintHandler = ({ str, kGramCount, windowCount }) => {
+export const fingerPrintHandler = ({ str, kGramCount, windowCount }) => {
   const arrFingerPrint = windowHandler({ str, kGramCount, windowCount })?.map(
     (windowData) => {
       return windowData?.reduce((lowVal, curr) => {
@@ -96,7 +96,7 @@ const fingerPrintHandler = ({ str, kGramCount, windowCount }) => {
 //   kGramCount: 3,
 //   windowCount: 5,
 // });
-const jaccardSimilarityHandler = ({
+export const jaccardSimilarityHandler = ({
   strJudulMhs,
   strJudulPenelitian,
   kGramCount,
@@ -133,7 +133,7 @@ const jaccardSimilarityHandler = ({
 //  * Judul penelitian seorang dosen banyak, jadi disimpan dalam array saja
 //  */
 
-const winnowingHandler = ({
+export const winnowingHandler = ({
   strJudulMhs,
   arrJudulDosen = [],
   kGramCount,
